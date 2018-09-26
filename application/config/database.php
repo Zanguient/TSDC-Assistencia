@@ -103,7 +103,7 @@ return [
     | you may use many connections at once using the Database library.
     |
     */
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mysqli'),
     /*
     |--------------------------------------------------------------------------
     | Database Connections
@@ -136,8 +136,8 @@ return [
             'prefix' => '',
             'strict' => false,
         ],
-        'mysql' => [
-            'driver' => 'mysql',
+        'mysqli' => [
+            'driver' => 'mysqli',
             'host' => $host,
             'database' => $database,
             'username' => $username,
