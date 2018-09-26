@@ -69,22 +69,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
+mysql://b568cc28cab43e:4b9856d7@us-cdbr-iron-east-01.cleardb.net/heroku_fd9a288a3d499c8?reconnect=true
 */
 $active_group = 'default';
 $query_builder = TRUE;
 
-if(getenv('CLEARDB_DATABASE_URL')) {
-    $host = $url["host"];
-    $database = substr($url["path"], 1);
-    $username = $url["user"];
-    $password = $url["pass"];
-}
+
 $db['default'] = array(
     'dsn'   => '',
-    'hostname' => $host = $url["host"],
-    'username' => $username = $url["user"],
-    'password' => $password = $url["pass"],
-    'database' => $database = substr($url["path"], 1),
+    'hostname' => 'us-cdbr-iron-east-01.cleardb.net',
+    'username' => 'b568cc28cab43e',
+    'password' => '4b9856d7',
+    'database' => 'heroku_fd9a288a3d499c8',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
