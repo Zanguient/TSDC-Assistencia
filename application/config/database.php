@@ -74,21 +74,15 @@ mysql://b568cc28cab43e:4b9856d7@us-cdbr-iron-east-01.cleardb.net/heroku_fd9a288a
 $active_group = 'default';
 $query_builder = TRUE;
 
-if(getenv('CLEARDB_DATABASE_URL')) {
-    $url = parse_url(getenv('CLEARDB_DATABASE_URL'));
-    $host = $url["host"];
-    $database = substr($url["path"], 1);
-    $username = $url["user"];
-    $password = $url["pass"];
-}
-return [
+//Add this to fetch the CLEARDB_DATABASE_URL
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $db['default'] = array(
     'dsn'   => '',
-    'hostname' => $host,
-    'username' => $username,
-    'password' => $password,
-    'database' => $database,
+    'hostname' => $url["host"],
+    'username' => $url["user"],
+    'password' => $url["pass"],
+    'database' => substr($url["path"], 1),
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
@@ -103,29 +97,4 @@ $db['default'] = array(
     'stricton' => FALSE,
     'failover' => array(),
     'save_queries' => TRUE
-    )
-];
-
-/*
-
-$db['default'] = array(
-    'dsn'   => '',
-    'hostname' => 'us-cdbr-iron-east-01.cleardb.net',
-    'username' => 'b568cc28cab43e',
-    'password' => '4b9856d7',
-    'database' => 'heroku_fd9a288a3d499c8',
-    'dbdriver' => 'mysqli',
-    'dbprefix' => '',
-    'pconnect' => FALSE,
-    'db_debug' => (ENVIRONMENT !== 'production'),
-    'cache_on' => FALSE,
-    'cachedir' => '',
-    'char_set' => 'utf8',
-    'dbcollat' => 'utf8_general_ci',
-    'swap_pre' => '',
-    'encrypt' => FALSE,
-    'compress' => FALSE,
-    'stricton' => FALSE,
-    'failover' => array(),
-    'save_queries' => TRUE
-);*/
+);
