@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link		https://codeigniter.com/user_guide/database/
  */
 abstract class CI_DB_driver {
-
+	
 	/**
 	 * Data Source Name / Connect string
 	 *

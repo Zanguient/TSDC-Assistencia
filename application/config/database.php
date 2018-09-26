@@ -1,15 +1,4 @@
 <?php
-/*
- * Heroku 
- */
-if(getenv('CLEARDB_DATABASE_URL')) {
-    $url = parse_url(getenv('CLEARDB_DATABASE_URL'));
-    $host = $url["host"];
-    $database = substr($url["path"], 1);
-    $username = $url["user"];
-    $password = $url["pass"];
-}
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -84,12 +73,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+if(getenv('CLEARDB_DATABASE_URL')) {
+    $host = $url["host"];
+    $database = substr($url["path"], 1);
+    $username = $url["user"];
+    $password = $url["pass"];
+}
 $db['default'] = array(
     'dsn'   => '',
-    'hostname' => $host,
-    'username' => $username,
-    'password' => $password,
-    'database' => $database,
+    'hostname' => $host = $url["host"],
+    'username' => $username = $url["user"],
+    'password' => $password = $url["pass"],
+    'database' => $database = substr($url["path"], 1),
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
