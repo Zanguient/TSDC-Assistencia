@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['app_version'] = '2.0'; //Versão do sistema
 
 
-$config['base_url'] = 'http://127.0.0.1';
+$config['base_url'] = 'http://os.dev';
 
 /*
 |--------------------------------------------------------------------------
